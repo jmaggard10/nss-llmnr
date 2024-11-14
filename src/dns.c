@@ -60,9 +60,9 @@
   GET_32_P(((uint8_t *)data) + idx * sizeof(uint32_t)/sizeof(uint8_t), value) 
 
 struct dns_packet* dns_packet_new(void) {
-    struct dns_packet *p;
+    struct dns_packet *p = malloc(sizeof(struct dns_packet));
 
-    if (!(p = malloc(sizeof(struct dns_packet))))
+    if (!p)
         return NULL;
     
     p->size = p->rindex = 2*6;
